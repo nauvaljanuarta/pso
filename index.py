@@ -6,29 +6,25 @@ import numpy as np
 def objective_function(x):
      return x**2          # f(x) = x^2
 
-# --- Parameter PSO ---
-n_particles = 10  # Jumlah partikel [cite: 17]
-max_iterations = 50  # Iterasi maksimum [cite: 17]
-w = 0.5  # Inersia [cite: 17]
-c1 = 1.5  # Koefisien kognitif [cite: 17]
-c2 = 1.5  # Koefisien sosial [cite: 17]
-search_bounds = (-10, 10)  # Batas pencarian x [cite: 17]
+# inisialisasi 
+n_particles = 10  
+max_iterations = 50  
+w = 0.5  
+c1 = 1.5  
+c2 = 1.5  
+search_bounds = (-10, 10)  
 
-# --- Inisialisasi Partikel ---
 particles_pos = np.random.uniform(search_bounds[0], search_bounds[1], n_particles)
 particles_vel = np.random.uniform(-abs(search_bounds[1] - search_bounds[0]), abs(search_bounds[1] - search_bounds[0]), n_particles) # Kecepatan awal bisa random atau nol
 
-# Inisialisasi personal best dan global best
 pbest_pos = np.copy(particles_pos)
 pbest_val = np.array([objective_function(p) for p in pbest_pos])
 
 gbest_val = np.min(pbest_val)
 gbest_pos = pbest_pos[np.argmin(pbest_val)]
 
-best_values_per_iteration = [] # Untuk menyimpan nilai terbaik per iterasi
+best_values_per_iteration = [] 
 
-# --- Algoritma PSO ---
-# Mengacu pada algoritma umum PSO yang dijelaskan di slide 4 dan 5
 print(f"Memulai PSO untuk fungsi f(x) = x^2")
 print(f"Parameter: Partikel={n_particles}, Iterasi={max_iterations}, w={w}, c1={c1}, c2={c2}")
 print(f"Batas pencarian: {search_bounds[0]} <= x <= {search_bounds[1]}\n")
