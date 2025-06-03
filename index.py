@@ -2,13 +2,11 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-# --- Fungsi Objektif ---
+
 def objective_function(x):
-    """Fungsi yang akan diminimalkan."""
-    return x**2
+     return x**2          # f(x) = x^2
 
 # --- Parameter PSO ---
-# Diambil dari slide 16 & 17 presentasi
 n_particles = 10  # Jumlah partikel [cite: 17]
 max_iterations = 50  # Iterasi maksimum [cite: 17]
 w = 0.5  # Inersia [cite: 17]
@@ -88,6 +86,7 @@ plt.title('Nilai Minimum Terbaik per Iterasi (PSO)')
 plt.xlabel('Iterasi')
 plt.ylabel('Nilai Minimum Fungsi f(x)')
 plt.grid(True)
+plt.yscale('log')
 plt.xticks(np.arange(0, max_iterations + 1, step=max(1, max_iterations//10))) # Membuat tick x lebih rapi
 plt.tight_layout()
 plt.show()
